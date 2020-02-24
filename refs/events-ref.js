@@ -1,0 +1,17 @@
+import EventEmitter from 'events'
+
+export function eventsExample () {
+  class Logger extends EventEmitter {
+    log(message) {
+      this.emit('message', `${message} ${Date.now()}`)
+    }
+  }
+
+  const logger = new Logger();
+
+  logger.on('message', data => {
+    console.log(data)
+  });
+
+  logger.log('hello');
+}
